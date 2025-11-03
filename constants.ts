@@ -100,6 +100,51 @@ export const PROMPT_ELEMENTS: PromptElement[] = [
     id: 'photo-realistic',
     label: 'Photo-Realistic',
     promptFragment: 'Generate the final image with a high degree of photorealism, focusing on realistic textures and details.',
+  },
+  {
+    id: 'formal-attire',
+    label: 'Formal Attire',
+    promptFragment: 'Change the clothing to formal business attire, such as a suit or blazer.',
+  },
+  {
+    id: 'casual-wear',
+    label: 'Casual Wear',
+    promptFragment: 'Change the clothing to casual wear, like a t-shirt or sweater.',
+  },
+  {
+    id: 'dramatic-mood',
+    label: 'Dramatic Mood',
+    promptFragment: 'Create a dramatic and moody atmosphere with high-contrast lighting and deep shadows.',
+  },
+  {
+    id: 'soft-focus',
+    label: 'Soft Focus BG',
+    promptFragment: 'Apply a soft-focus effect to the background for a dreamy, artistic look.',
+  },
+  {
+    id: 'detailed-background',
+    label: 'Detailed BG',
+    promptFragment: 'Add more intricate and interesting details to the background environment.',
+  },
+  {
+    id: 'vintage-look',
+    label: 'Vintage Look',
+    promptFragment: 'Give the image a vintage or retro film look with specific color grading and grain.',
+  },
+  {
+    id: 'smile',
+    label: 'Add a Smile',
+    promptFragment: 'Subtly enhance the expression to create a gentle, confident smile.',
+  },
+  {
+    id: 'adapt-clothing',
+    label: 'Adapt Clothing',
+    promptFragment: "Intelligently modify the subject's clothing to perfectly match the theme and environment of the selected style.",
+  },
+  {
+    id: 'full-body',
+    label: 'Full Body Shot',
+    promptFragment: 'Reframe the image as a full-body photograph, capturing the person from head to toe within the scene.',
   }
 ];
 

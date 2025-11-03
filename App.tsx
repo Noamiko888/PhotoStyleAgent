@@ -129,6 +129,28 @@ const App: React.FC = () => {
     }
   };
 
+  const handleFollowUpGenerate = async (followUpPrompt: string) => {
+    if (!generatedImageUrl) {
+      setError('Cannot perform follow-up without a generated image.');
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const resultImageUrl = await generateImage(followUpPrompt, generatedImageUrl);
+      setGeneratedImageUrl(resultImageUrl);
+    } catch (e) {
+      console.error(e);
+      const errorMessage = e instanceof Error ? e.message : 'An unknown error occurred.';
+      setError(`Failed to refine image: ${errorMessage}`);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
   const isGenerateDisabled = isLoading || !uploadedFile || !prompt;
 
   return (
@@ -191,6 +213,7 @@ const App: React.FC = () => {
             <ResultDisplay
               generatedImageUrl={generatedImageUrl}
               isLoading={isLoading}
+              onFollowUp={handleFollowUpGenerate}
             />
           </div>
         </div>

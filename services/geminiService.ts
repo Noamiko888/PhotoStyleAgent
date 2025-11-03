@@ -1,19 +1,29 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 import { fileToBase64 } from '../utils/fileUtils';
 
 const MODEL_NAME = 'gemini-2.5-flash-image';
 
-export async function generateImage(prompt: string, imageFile: File): Promise<string> {
+export async function generateImage(prompt: string, imageSource: File | string): Promise<string> {
   if (!process.env.API_KEY) {
-    // In a real app, this should be handled more gracefully.
-    // For this context, we assume API_KEY is available in the environment.
     throw new Error("API_KEY environment variable not set.");
   }
   
   const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
-  const base64Data = await fileToBase64(imageFile);
+  let base64Data: string;
+  let mimeType: string;
+
+  if (imageSource instanceof File) {
+    base64Data = await fileToBase64(imageSource);
+    mimeType = imageSource.type;
+  } else { // Handle base64 data URL string for follow-ups
+    const match = imageSource.match(/^data:(image\/[a-zA-Z]+);base64,(.*)$/);
+    if (!match || match.length < 3) {
+      throw new Error("Invalid image data URL format for follow-up generation.");
+    }
+    mimeType = match[1];
+    base64Data = match[2];
+  }
 
   const response = await ai.models.generateContent({
     model: MODEL_NAME,
@@ -22,7 +32,7 @@ export async function generateImage(prompt: string, imageFile: File): Promise<st
         {
           inlineData: {
             data: base64Data,
-            mimeType: imageFile.type,
+            mimeType: mimeType,
           },
         },
         {
