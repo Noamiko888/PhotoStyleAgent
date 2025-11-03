@@ -1,0 +1,108 @@
+import { StylePreset, PromptElement } from './types';
+import { CameraIcon } from './components/icons/CameraIcon';
+import { BriefcaseIcon } from './components/icons/BriefcaseIcon';
+import { LeafIcon } from './components/icons/LeafIcon';
+import { CircleHalfIcon } from './components/icons/CircleHalfIcon';
+import { CoffeeIcon } from './components/icons/CoffeeIcon';
+import { LightbulbIcon } from './components/icons/LightbulbIcon';
+import { AnimeIcon } from './components/icons/AnimeIcon';
+import { SuperheroIcon } from './components/icons/SuperheroIcon';
+import { PopArtIcon } from './components/icons/PopArtIcon';
+
+export const STYLE_PRESETS: StylePreset[] = [
+  {
+    id: 'studio-headshot',
+    name: 'Studio Headshot',
+    description: 'A clean, professional headshot with a neutral studio background.',
+    promptTemplate: "Take the person from the uploaded photo, completely remove the original background, and create a professional studio headshot. Place them against a clean, neutral background (light gray or off-white). The lighting should be soft and flattering, suitable for a corporate profile like LinkedIn. Maintain the subject's facial features and expression precisely.",
+    icon: CameraIcon,
+  },
+  {
+    id: 'corporate',
+    name: 'Corporate',
+    description: 'A sharp, confident look with a modern office background.',
+    promptTemplate: "Isolate the person from the uploaded image and place them in a modern, professional office environment. The background should be a bright, slightly out-of-focus office interior with architectural details and natural light. The subject should be well-lit and look sharp and confident. Preserve the subject's identity and clothing. Output a high-resolution image suitable for a business profile.",
+    icon: BriefcaseIcon,
+  },
+  {
+    id: 'outdoor',
+    name: 'Outdoor',
+    description: 'A friendly and approachable photo in a natural, outdoor setting.',
+    promptTemplate: "Extract the person from the uploaded photo and place them in a pleasant, out-of-focus outdoor setting, like a park or modern urban area. The background should be blurred (bokeh effect) to keep the focus on the subject. The lighting should look natural and bright, creating a friendly and approachable feel. Ensure the subject looks natural in the new environment and their features are preserved.",
+    icon: LeafIcon,
+  },
+  {
+    id: 'black-and-white',
+    name: 'Black & White',
+    description: 'A timeless and dramatic high-contrast monochrome portrait.',
+    promptTemplate: "Convert the person in the uploaded photo into a classic, high-contrast black and white portrait. Completely remove the original background and replace it with a simple, dark, or textured gray background. The lighting should be dramatic and cinematic, emphasizing the subject's facial contours. The final image should be a powerful, timeless monochrome headshot. Maintain the subject's likeness.",
+    icon: CircleHalfIcon,
+  },
+  {
+    id: 'approachable',
+    name: 'Approachable',
+    description: 'A warm, inviting photo with soft lighting and a cozy background.',
+    promptTemplate: "Take the subject from the uploaded photo and place them in a warm, inviting setting like a cozy cafe or a comfortable indoor space with soft lighting. The background should be tastefully blurred. Apply warm color tones to the entire image to create an approachable and friendly vibe. Ensure the subject's face is clearly visible and their original features are maintained.",
+    icon: CoffeeIcon,
+  },
+  {
+    id: 'creative',
+    name: 'Creative',
+    description: 'A bold, modern look with a vibrant, eye-catching background.',
+    promptTemplate: "Isolate the subject from the uploaded photo, remove the background, and place them against a vibrant, solid color or a simple, abstract graphic background. The lighting should be clean and bright, making the subject pop. This style is for creative professionals who want a bold, modern, and eye-catching profile picture. Preserve the subject's identity perfectly.",
+    icon: LightbulbIcon,
+  },
+  {
+    id: 'anime',
+    name: 'Anime',
+    description: 'Reimagine yourself in a vibrant Japanese anime style.',
+    promptTemplate: "Transform the person from the uploaded photo into an anime/manga art style. Completely remove the original background and replace it with a dynamic, stylized anime background with speed lines or a soft-focus scenic view. The character should have characteristic features like large expressive eyes and stylized hair, while still retaining a recognizable likeness to the original person.",
+    icon: AnimeIcon,
+  },
+  {
+    id: 'superhero',
+    name: 'Superhero',
+    description: 'Become a hero with a comic book art transformation.',
+    promptTemplate: "Reimagine the person in the photo as a superhero in a modern comic book art style. Completely remove the original background and replace it with a dramatic, action-filled scene, like a cityscape at night or an explosion. The lighting should be heroic and dynamic. Keep the facial likeness of the person but render their clothing and pose in a superhero style.",
+    icon: SuperheroIcon,
+  },
+  {
+    id: 'pop-art',
+    name: 'Pop Art',
+    description: 'A bold, graphic style inspired by Andy Warhol.',
+    promptTemplate: "Convert the photo of the person into a Pop Art style portrait, inspired by Andy Warhol. Isolate the subject, remove the background, and place them on a flat, vibrant, solid-color background. The image should use a limited, high-contrast color palette and posterization effects. Create a bold, graphic, and visually striking image.",
+    icon: PopArtIcon,
+  },
+];
+
+export const PROMPT_ELEMENTS: PromptElement[] = [
+  {
+    id: 'maintain-likeness',
+    label: 'Maintain Likeness',
+    promptFragment: 'Ensure the facial features and likeness of the person in the photo are accurately maintained.',
+  },
+  {
+    id: 'polish-face',
+    label: 'Polish Facial Look',
+    promptFragment: 'Subtly enhance the facial features, smooth the skin, and give a polished, professional look.',
+  },
+  {
+    id: 'improve-lighting',
+    label: 'Improve Lighting',
+    promptFragment: 'Adjust the lighting to be more cinematic and flattering, adding depth and dimension.',
+  },
+  {
+    id: 'vibrant-colors',
+    label: 'Vibrant Colors',
+    promptFragment: 'Boost the color saturation and vibrancy for a more dynamic and eye-catching image.',
+  },
+  {
+    id: 'photo-realistic',
+    label: 'Photo-Realistic',
+    promptFragment: 'Generate the final image with a high degree of photorealism, focusing on realistic textures and details.',
+  }
+];
+
+
+export const SUPPORTED_FORMATS = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif'];
+export const MAX_FILE_SIZE_MB = 20;

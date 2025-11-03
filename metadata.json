@@ -1,0 +1,5 @@
+{
+  "name": "PhotoStyleAgent",
+  "description": "An application that allows users to upload a photo, select a style, and use Gemini to generate a new stylized image. Users can also provide custom text prompts for edits.",
+  "requestFramePermissions": []
+}
