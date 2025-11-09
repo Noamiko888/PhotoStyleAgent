@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DownloadIcon } from './icons/DownloadIcon';
 import { SparklesIcon } from './icons/SparklesIcon';
 
 interface ResultDisplayProps {
   generatedImageUrl: string | null;
+  previewUrl: string | null;
   isLoading: boolean;
   onFollowUp: (prompt: string) => void;
 }
@@ -16,9 +17,15 @@ const LoadingSpinner: React.FC = () => (
   </div>
 );
 
-export const ResultDisplay: React.FC<ResultDisplayProps> = ({ generatedImageUrl, isLoading, onFollowUp }) => {
+export const ResultDisplay: React.FC<ResultDisplayProps> = ({ generatedImageUrl, previewUrl, isLoading, onFollowUp }) => {
   const [followUpPrompt, setFollowUpPrompt] = useState('');
+  const [showOriginal, setShowOriginal] = useState(false);
   const hasContent = isLoading || generatedImageUrl;
+
+  // Reset the toggle to show the new generated image whenever it changes.
+  useEffect(() => {
+    setShowOriginal(false);
+  }, [generatedImageUrl]);
 
   const handleFollowUpClick = () => {
     if (followUpPrompt.trim() && !isLoading) {
@@ -34,14 +41,37 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ generatedImageUrl,
     );
   }
 
+  const currentImageUrl = showOriginal ? previewUrl : generatedImageUrl;
+
   return (
     <div className="flex flex-col gap-4">
       <div className="relative w-full aspect-square bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-lg flex items-center justify-center">
         {isLoading && <LoadingSpinner />}
-        {generatedImageUrl && (
-          <img src={generatedImageUrl} alt="Generated" className="w-full h-full object-contain" />
+        
+        {!isLoading && generatedImageUrl && previewUrl && (
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 bg-gray-900/60 backdrop-blur-sm p-1 rounded-full flex items-center gap-1 text-sm font-medium">
+            <button
+              onClick={() => setShowOriginal(false)}
+              className={`px-4 py-1 rounded-full transition-colors duration-200 ${!showOriginal ? 'bg-indigo-600 text-white shadow' : 'text-gray-300 hover:bg-gray-700/50'}`}
+              aria-pressed={!showOriginal}
+            >
+              Generated
+            </button>
+            <button
+              onClick={() => setShowOriginal(true)}
+              className={`px-4 py-1 rounded-full transition-colors duration-200 ${showOriginal ? 'bg-indigo-600 text-white shadow' : 'text-gray-300 hover:bg-gray-700/50'}`}
+              aria-pressed={showOriginal}
+            >
+              Original
+            </button>
+          </div>
         )}
-        {!isLoading && generatedImageUrl && (
+        
+        {currentImageUrl && (
+          <img src={currentImageUrl} alt={showOriginal ? 'Original uploaded image' : 'AI generated image'} className="w-full h-full object-contain" />
+        )}
+        
+        {!isLoading && generatedImageUrl && !showOriginal && (
            <a
               href={generatedImageUrl}
               download="styled-image.png"

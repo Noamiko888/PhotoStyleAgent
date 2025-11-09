@@ -8,8 +8,16 @@ import { LightbulbIcon } from './components/icons/LightbulbIcon';
 import { AnimeIcon } from './components/icons/AnimeIcon';
 import { SuperheroIcon } from './components/icons/SuperheroIcon';
 import { PopArtIcon } from './components/icons/PopArtIcon';
+import { StarIcon } from './components/icons/StarIcon';
 
 export const STYLE_PRESETS: StylePreset[] = [
+  {
+    id: 'special-mode',
+    name: 'Special Mode',
+    description: 'A polished, half-body portrait for a special photo.',
+    promptTemplate: "Create a polished portrait of the person, half body shot, that makes a special photo.",
+    icon: StarIcon,
+  },
   {
     id: 'studio-headshot',
     name: 'Studio Headshot',

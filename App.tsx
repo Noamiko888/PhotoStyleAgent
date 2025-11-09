@@ -72,8 +72,12 @@ const App: React.FC = () => {
   }, [previewUrl]);
 
   const handleStyleSelect = useCallback((style: StylePreset) => {
+    if (selectedStyle === style.id) return;
+
     setSelectedStyle(style.id);
-  }, []);
+    setSelectedElements([]); // Reset elements on new style selection
+  }, [selectedStyle]);
+
 
   const handleElementToggle = useCallback((elementId: string) => {
     setSelectedElements(prev =>
@@ -212,6 +216,7 @@ const App: React.FC = () => {
             )}
             <ResultDisplay
               generatedImageUrl={generatedImageUrl}
+              previewUrl={previewUrl}
               isLoading={isLoading}
               onFollowUp={handleFollowUpGenerate}
             />

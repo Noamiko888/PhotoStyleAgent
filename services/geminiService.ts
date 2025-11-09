@@ -1,7 +1,7 @@
 import { GoogleGenAI, Modality } from "@google/genai";
 import { fileToBase64 } from '../utils/fileUtils';
 
-const MODEL_NAME = 'gemini-2.5-flash-image';
+const IMAGE_MODEL_NAME = 'gemini-2.5-flash-image';
 
 export async function generateImage(prompt: string, imageSource: File | string): Promise<string> {
   if (!process.env.API_KEY) {
@@ -26,7 +26,7 @@ export async function generateImage(prompt: string, imageSource: File | string):
   }
 
   const response = await ai.models.generateContent({
-    model: MODEL_NAME,
+    model: IMAGE_MODEL_NAME,
     contents: {
       parts: [
         {
