@@ -21,22 +21,22 @@ export const STYLE_PRESETS: StylePreset[] = [
   {
     id: 'studio-headshot',
     name: 'Studio Headshot',
-    description: 'A clean, professional headshot with a neutral studio background.',
-    promptTemplate: "Take the person from the uploaded photo, completely remove the original background, and create a professional studio headshot. Place them against a clean, neutral background (light gray or off-white). The lighting should be soft and flattering, suitable for a corporate profile like LinkedIn. Maintain the subject's facial features and expression precisely.",
+    description: 'High-end studio look with soft lighting and neutral backdrop.',
+    promptTemplate: "Create a professional, high-end studio headshot of the person. Isolate the subject and place them against a clean, hand-painted canvas background (neutral light grey or soft beige). Use soft, diffuse studio lighting (Rembrandt or butterfly lighting setup) to accentuate facial features gently. Ensure sharp focus on the eyes, natural skin texture, and a shallow depth of field (bokeh) to separate the subject from the background. 8k resolution, photorealistic.",
     icon: CameraIcon,
   },
   {
     id: 'corporate',
     name: 'Corporate',
-    description: 'A sharp, confident look with a modern office background.',
-    promptTemplate: "Isolate the person from the uploaded image and place them in a modern, professional office environment. The background should be a bright, slightly out-of-focus office interior with architectural details and natural light. The subject should be well-lit and look sharp and confident. Preserve the subject's identity and clothing. Output a high-resolution image suitable for a business profile.",
+    description: 'Confident, modern business look with architectural depth.',
+    promptTemplate: "Generate a premium corporate portrait. Place the subject in a modern, high-tech office environment with depth. The background should be a blurred (bokeh) open-plan office with glass architectural elements and natural daylight. The subject should be dressed in professional business attire, looking confident and approachable. Use 'golden hour' natural lighting mixed with soft fill light. Composition should follow the rule of thirds. Photorealistic, 85mm lens style.",
     icon: BriefcaseIcon,
   },
   {
     id: 'outdoor',
     name: 'Outdoor',
-    description: 'A friendly and approachable photo in a natural, outdoor setting.',
-    promptTemplate: "Extract the person from the uploaded photo and place them in a pleasant, out-of-focus outdoor setting, like a park or modern urban area. The background should be blurred (bokeh effect) to keep the focus on the subject. The lighting should look natural and bright, creating a friendly and approachable feel. Ensure the subject looks natural in the new environment and their features are preserved.",
+    description: 'Natural, approachable look with soft sunlight.',
+    promptTemplate: "Create a lifestyle portrait in a beautiful outdoor setting. Place the subject in a soft-focus park or urban garden environment. Use natural, soft sunlight (golden hour) backlighting to create a rim light effect on the hair. The background should be lush greenery or blurred city texture, creating a friendly and approachable vibe. The image should look like it was taken with a high-aperture portrait lens (f/1.8). High resolution, natural colors.",
     icon: LeafIcon,
   },
   {

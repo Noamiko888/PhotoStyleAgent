@@ -1,15 +1,25 @@
 import React from 'react';
+import { CritiqeLogo } from './icons/CritiqeLogo';
 
 export const Header: React.FC = () => {
   return (
-    <header className="bg-gray-900/50 backdrop-blur-sm shadow-md sticky top-0 z-10">
-      <div className="container mx-auto px-4 py-4">
-        <h1 className="text-2xl sm:text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">
-          AI Headshot Studio
-        </h1>
-        <p className="text-center text-gray-400 mt-1 text-sm">
-          Create stunning, professional profile pictures with AI
-        </p>
+    <header className="bg-[#0B1121]/80 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-800">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <CritiqeLogo className="w-10 h-10 shadow-lg" />
+          <div className="text-left">
+            <h1 className="text-2xl font-bold text-white tracking-wide">
+              CRITIQE
+            </h1>
+            <p className="text-[10px] text-amber-500 font-semibold tracking-widest uppercase">
+              Studio
+            </p>
+          </div>
+        </div>
+        
+        <div className="hidden sm:block text-right">
+             <p className="text-gray-400 text-xs">AI-Powered Solutions</p>
+        </div>
       </div>
     </header>
   );
